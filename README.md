@@ -1,6 +1,6 @@
 # Calendly Interview Materials
 ## Application
-<a href>https://roomy-fire-houseboat.glitch.me/</a>
+<a href>https://roomy-fire-houseboat.glitch.me</a>
 ## Strategy
 <a href="https://docs.google.com/spreadsheets/d/1jo19HD3Biq8bJCTgf4TgIQsfw81BSbUWVMEH9SoxpGQ/edit?usp=sharing">A test strategy was composed in a Google Sheet here.</a>
 ## Scripts
