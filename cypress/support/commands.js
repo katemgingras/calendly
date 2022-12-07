@@ -1,25 +1,45 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Custom commands to handle repetitive/unclear tasks
+
+// Enter an arbitrary grid size
+Cypress.Commands.add('inputGridSize', (input) =>  {
+    cy.get('#number').click().type(input)
+})
+
+// Click a grid space by row and column
+Cypress.Commands.add('clickGrid', (row, column) => {
+    cy.get('[data-column="'+column+'"][data-row="'+row+'"]').click()
+})
+
+// Play a game where X wins
+Cypress.Commands.add('playWinX', () => {
+    cy.inputGridSize(1)
+    cy.get('#start').click()
+    cy.clickGrid(0,0)
+})
+
+// Play a game where O wins
+Cypress.Commands.add('playWinO', () => {
+    cy.inputGridSize(3)
+    cy.get('#start').click()
+    cy.clickGrid(2,2)
+    cy.clickGrid(1,0)
+    cy.clickGrid(2,1)
+    cy.clickGrid(2,0)
+    cy.clickGrid(0,2)
+    cy.clickGrid(0,0)
+})
+
+// Play a game where there is a tie
+Cypress.Commands.add('playTie', () => {
+    cy.inputGridSize(3)
+    cy.get('#start').click()
+    cy.clickGrid(0,0)
+    cy.clickGrid(0,2)
+    cy.clickGrid(0,1)
+    cy.clickGrid(1,0)
+    cy.clickGrid(1,2)
+    cy.clickGrid(1,1)
+    cy.clickGrid(2,0)
+    cy.clickGrid(2,1)
+    cy.clickGrid(2,2)
+})
